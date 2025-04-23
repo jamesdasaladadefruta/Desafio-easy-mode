@@ -41,7 +41,7 @@ app.get("/jogos", (req, res) => {
     })
 })
 
-app.post("/jogo/:id", (req, res) => {
+app.post("/jogo", (req, res) => {
 
     const { nome, img, valor, descricao, classificacao } = req.body
 
@@ -49,7 +49,7 @@ app.post("/jogo/:id", (req, res) => {
 })
 
 
-app.post("/userc/:id", (req, res) => {
+app.post("/userc", (req, res) => {
 
     const { nome, email, senha } = req.body
 
