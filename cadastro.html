@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
-    body{
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 100vh;
     }
-    div{
+
+    div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -23,10 +25,11 @@
         height: 300px;
         border-radius: 10px;
     }
-    div h1{
+
+    div h1 {
         color: rgb(0, 255, 76);
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
-        
+
     }
 </style>
 
@@ -37,36 +40,34 @@
         <input type="text" placeholder="Username" id="name">
         <input type="email" placeholder="E-mail" id="email">
         <input type="password" placeholder="Password" id="senha">
-         <button onclick="cadastrar()">Send</button>      
+        <button onclick="cadastrar()">Send</button>
     </div>
-    
 
 
 
 
+    <script>
 
+        async function cadastrar() {
 
-<script>
+            let name = document.getElementById("name").value
 
-let name = document.getElementById("name").value
-let email = document.getElementById("email").value
-let senha = document.getElementById("senha").value
+            let email = document.getElementById("email").value
 
-async function cadastrar() {
-    var cadastro = await fetch('https//:localhost:8080/userc', 
-       {method :"POST",
-       headers:{"Content-Type": "application/json"},
-  body:  JSON.stringify({name , email , senha})}
-    
-)
+            let senha = document.getElementById("senha").value
 
-
-
-
-}
+            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc',
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, senha })
+                }
+            )
+        }
 
 
 
-</script>
+    </script>
 </body>
+
 </html>
