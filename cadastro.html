@@ -37,7 +37,7 @@
 
     <div>
         <h1>Welcome</h1>
-        <input type="text" placeholder="Username" id="name">
+        <input type="text" placeholder="Username" id="username">
         <input type="email" placeholder="E-mail" id="email">
         <input type="password" placeholder="Password" id="senha">
         <button onclick="cadastrar()">Send</button>
@@ -50,7 +50,7 @@
 
         async function cadastrar() {
 
-            let name = document.getElementById("name").value
+            let nome = document.getElementById("username").value
 
             let email = document.getElementById("email").value
 
@@ -60,7 +60,7 @@
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, senha })
+                    body: JSON.stringify({ nome, email, senha })
                 }
             )
         }
