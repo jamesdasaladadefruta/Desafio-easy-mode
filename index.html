@@ -46,23 +46,23 @@
 
 
 
-
-
-
     <script>
 
-        let name = document.getElementById("name").value
-        let email = document.getElementById("email").value
-        let senha = document.getElementById("senha").value
-
+        
         async function cadastrar() {
+
+            let name = document.getElementById("name").value
+
+            let email = document.getElementById("email").value
+
+            let senha = document.getElementById("senha").value
+
             var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc',
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, senha })
                 }
-
             )
 
 
