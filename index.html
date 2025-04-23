@@ -63,27 +63,19 @@
 
 
 
-            
+
         // }
 
 
         async function cadastrar() {
             let email = document.getElementById("email").value
-           let senha = document.getElementById("senha").value
+            let senha = document.getElementById("senha").value
 
-
-            var res = await fetch('https://desafio-easy-mode.onrender.com/validacao',{
-                method:"POST",
-                headers:"application/json",
-                body:json.stringfy{email,senha}
-
-
-
+            var res = await fetch('https://desafio-easy-mode.onrender.com/validacao', {
+                method: "POST",
+                headers: "application/json",
+                body: JSON.stringify({ email, senha })
             })
-
-
-
-
         }
 
 
