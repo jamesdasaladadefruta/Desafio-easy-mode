@@ -47,24 +47,49 @@
 
     <script>
 
-        async function cadastrar() {
+        // async function cadastrar() {
 
-            let email = document.getElementById("email").value
-            let senha = document.getElementById("senha").value
+        //     let email = document.getElementById("email").value
+        //     let senha = document.getElementById("senha").value
 
-            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userl')
-            var listadelogins = await cadastro.json()
+        //     var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userl')
+        //     var listadelogins = await cadastro.json()
 
-            var filtrado =  listadelogins.filter(login => email ==  login.email && senha == login.senha)
+        //     var filtrado =  listadelogins.filter(login => email ==  login.email && senha == login.senha)
 
-            if(filtrado > 2){
-                alert("Login feito com sucesso!")
-            }
+        //     if(filtrado > 2){
+        //         alert("Login feito com sucesso!")
+        //     }
 
 
 
             
+        // }
+
+
+        async function cadastrar() {
+            let email = document.getElementById("email").value
+           let senha = document.getElementById("senha").value
+
+
+            var res = await fetch('https://desafio-easy-mode.onrender.com/validacao',{
+                method:"POST",
+                headers:"application/json",
+                body:json.stringfy{email,senha}
+
+
+
+            })
+
+
+
+
         }
+
+
+
+
+
 
 
 
