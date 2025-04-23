@@ -61,8 +61,32 @@ app.get("/userl", (req, res) => {
     db.all(`SELECT * FROM login `, [], (err, rows) => {
         res.json(rows)
     })
-
 })
+
+app.post('/validacao', (req, res) => {
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+        return res.status(400).json({ erro: "Email e senha são obrigatórios" });
+    }
+
+    db.get(`SELECT * FROM login WHERE email = ? AND senha = ?`, [email, senha], (err, row) => {
+        if (err) {
+            return res.status(500).json({ erro: "Erro ao acessar o banco de dados" });
+        }
+
+        if (row) {
+            res.status(200).json({ mensagem: "Login válido", usuario: row });
+        } else {
+            res.status(401).json({ mensagem: "Email ou senha incorretos" });
+        }
+    });
+});
+
+
+
+
+
 
 
 app.listen(8080, () => {
