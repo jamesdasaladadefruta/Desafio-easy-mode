@@ -20,21 +20,19 @@ db.serialize(() => {
         valor FLOAT,
         descricao TEXT,
         classificacao TEXT
-    );
+    )`);
 
-        CREATE TABLE IF NOT EXISTS login(
+    db.run(`CREATE TABLE IF NOT EXISTS login(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome varchar(100),
         email varchar(100),
         senha varchar(30)
-    )
-    
-    `)
+    )`);
 })
 
 
 app.get("/home", (req, res) => {
-   
+
 })
 
 app.get("/jogos", (req, res) => {
@@ -45,22 +43,22 @@ app.get("/jogos", (req, res) => {
 
 app.post("/jogo/:id", (req, res) => {
 
-    const {nome,img,valor,descricao,classificacao} = req.body
+    const { nome, img, valor, descricao, classificacao } = req.body
 
-   db.run(`INSERT INTO jogos(nome,img,valor,descricao,classificacao) VALUES(?,?,?,?,?)`,[nome,img,valor,descricao,classificacao])
+    db.run(`INSERT INTO jogos(nome,img,valor,descricao,classificacao) VALUES(?,?,?,?,?)`, [nome, img, valor, descricao, classificacao])
 })
 
 
-app.post("/userc/:id",(req,res)=>{
+app.post("/userc/:id", (req, res) => {
 
-    const {nome,email,senha} = req.body
+    const { nome, email, senha } = req.body
 
-    db.run(`INSERT INTO login(nome,email,senha) VALUES(?,?,?)`,[nome,email,senha])
+    db.run(`INSERT INTO login(nome,email,senha) VALUES(?,?,?)`, [nome, email, senha])
 
 })
 
-app.get("/userl",(req,res)=>{
-    db.all(`SELECT * FROM login`,[], (err,rows)=>{
+app.get("/userl", (req, res) => {
+    db.all(`SELECT * FROM login `, [], (err, rows) => {
         res.json(rows)
     })
 
