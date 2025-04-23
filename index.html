@@ -52,9 +52,18 @@
             let email = document.getElementById("email").value
             let senha = document.getElementById("senha").value
 
-            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc')
-            var res = res.json()
-        
+            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userl')
+            var listadelogins = await cadastro.json()
+
+            var filtrado =  listadelogins.filter(login => email ==  login.email && senha == login.senha)
+
+            if(filtrado > 2){
+                alert("Login feito com sucesso!")
+            }
+
+
+
+            
         }
 
 
