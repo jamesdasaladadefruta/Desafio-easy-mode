@@ -37,7 +37,6 @@
 
     <div>
         <h1>Welcome</h1>
-        <input type="text" placeholder="Username" id="name">
         <input type="email" placeholder="E-mail" id="email">
         <input type="password" placeholder="Password" id="senha">
         <button onclick="cadastrar()">Send</button>
@@ -48,26 +47,14 @@
 
     <script>
 
-        
         async function cadastrar() {
 
-            let name = document.getElementById("name").value
-
             let email = document.getElementById("email").value
-
             let senha = document.getElementById("senha").value
 
-            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc',
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, email, senha })
-                }
-            )
-
-
-
-
+            var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc')
+            var res = res.json()
+        
         }
 
 
