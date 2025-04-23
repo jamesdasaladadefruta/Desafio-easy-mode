@@ -59,8 +59,8 @@ app.post("/userc/:id",(req,res)=>{
 
 })
 
-app.get("userl",(req,res)=>{
-    db.all(`SELECT * FROM login`,[],(err,rows)=>{
+app.get("/userl",(req,res)=>{
+    db.all(`SELECT * FROM login`,[], (err,rows)=>{
         res.json(rows)
     })
 
