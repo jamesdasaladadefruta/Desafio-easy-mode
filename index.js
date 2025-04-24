@@ -86,11 +86,6 @@ app.post('/validacao', (req, res) => {
 });
 
 
-
-
-
-
-
 app.listen(8080, () => {
     console.log("Servidor aberto na porta 8080")
 })

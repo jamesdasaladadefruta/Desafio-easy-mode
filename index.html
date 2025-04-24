@@ -113,10 +113,6 @@
         //     if(filtrado > 2){
         //         alert("Login feito com sucesso!")
         //     }
-
-
-
-
         // }
 
 
@@ -130,7 +126,11 @@
                 body: JSON.stringify({ email, senha })
             })
 
-        
+            if (res.status === 200) {
+                window.location.href = "resposta.html?status=success"
+            } else {
+                window.location.href = "resposta.html?status=error"
+            }
 
 
         }
