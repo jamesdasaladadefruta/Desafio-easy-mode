@@ -56,6 +56,47 @@
             width: 100%;
             border-radius: 10px;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .modal-content h2 {
+            margin: 10px 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
     </style>
 </head>
 
@@ -68,13 +109,15 @@
 
 
 
-
-
     <div class="carousel">
-        <div class="carousel-inner" id="inner">
 
+        <div class="carousel-inner" id="inner">
         </div>
 
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modal-content"></div>
     </div>
 
     <script>
@@ -116,11 +159,7 @@
         async function montarProdutos() {
             let carousel = document.getElementById('inner')
 
-
             try {
-
-
-
                 let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
 
                 let listaDeJogos = await res.json()
@@ -131,9 +170,18 @@
 
                     divHtml.innerHTML = `<img src="${jogo.img}">`
 
+
+                    divHtml.addEventListener('click', () => {
+                        abrirModal(jogo)
+                    })
+
+
+
                     carousel.appendChild(divHtml)
                 })
-                requestAnimationFrame(() => {
+
+                //Ou requestanimationframe
+                setTimeout(() => {
                     carouselItems = document.querySelectorAll('.carousel-item');
                     totalItems = carouselItems.length;
                     currentIndex = 0
@@ -146,18 +194,29 @@
                 console.log(error)
             }
         }
+        montarProdutos()
+
+        async function abrirModal(jogo) {
+
+            const modal = document.getElementById('modal')
+            const modalContent = document.getElementById('modal-content')
 
 
-        async function modalJogos() {
             let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
             let listaDeJogos = await res.json()
 
+            modalContent.innerHTML = `
+            <button class="close-btn" onclick="fecharModal()">×</button>
+            <h2>${jogo.nome}</h2>
+            <img src="${jogo.img}" alt="${jogo.nome}">
+            <p>${jogo.descricao || "Sem descrição disponível."}</p>`
 
+            modal.style.display = 'flex';
 
+        }
 
-
-
-
+        function fecharModal() {
+            document.getElementById('modal').style.display = "none"
         }
 
 
@@ -171,8 +230,6 @@
 
 
 
-
-        montarProdutos()
 
 
 
