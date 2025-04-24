@@ -7,15 +7,124 @@
     <title>Document</title>
 </head>
 
+<style>
+
+body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #000;
+    }
+
+header{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+
+    display: flex;
+    border-radius: 2.5px;    
+    box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;; 
+}
+header h1{
+    color: #ffffff;
+}
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        width: 600px;
+        height: 475px;
+        border-radius: 10px;
+        box-shadow:1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;;
+    }
+
+    .container h1 {
+        color: rgb(0, 255, 76);
+        text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #24ff00;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+    .input-group {
+        position: relative;
+        margin: 5px 0;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #fff;
+        padding: 0 5px;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .input-group input {
+        width: 320px;
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        padding: 0 10px;
+        background: transparent;
+        border: 1.2px solid #fff;
+        outline: none;
+        border-radius: 5px;
+    }
+
+    .input-group input:focus~label,
+    .input-group input:valid~label {
+        top: 0;
+        font-size: 12px;
+        background: #000000;
+
+    }
+</style>
+
 <body>
+    <header>
+       <h1>Welcome</h1>
+       <h1 id="user"></h1>
+    
+    </header>
 
+  
     <div class="container">
-
-        <input type="text" id="nome">
-        <input type="text" id="img">
-        <input type="number" id="valor">
-        <input type="text" id="descricao">
-        <input type="number" id="classificacao">
+        <h1>Create a Product</h1>
+          <div class="input-group">
+            <input type="text" required id="nome">
+            <label for="">Nome</label>
+        </div>
+        <div class="input-group">
+            <input type="text" required id="img">
+            <label for="">Image URL </label>
+        </div>
+        <div class="input-group">
+            <input type="number" required id="valor">
+            <label for="">Valor</label>
+        </div>
+        <div class="input-group">
+            <input type="text" required id="descricao">
+            <label for="">Descrição</label>
+        </div>
+        <div class="input-group">
+            <input type="number" required id="classificacao">
+            <label for="">Classificação</label>
+        </div>
         <button onclick="criarProduto()"> Create Product</button>
     </div>
 
