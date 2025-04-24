@@ -19,20 +19,15 @@
         <button onclick="criarProduto()"> Create Product</button>
     </div>
 
-
-
-
-
-
-
     <script>
-        let nome = document.getElementById('nome')
-        let img = document.getElementById('img')
-        let valor = document.getElementById('valor')
-        let descricao = document.getElementById('descricao')
-        let classificacao = document.getElementById('classificacao')
 
         async function criarProduto() {
+
+            let nome = document.getElementById('nome').value
+            let img = document.getElementById('img').value
+            let valor = document.getElementById('valor').value
+            let descricao = document.getElementById('descricao').value
+            let classificacao = document.getElementById('classificacao').value
 
             let res = await fetch('https://desafio-easy-mode.onrender.com/jogo', {
                 method: "POST",
