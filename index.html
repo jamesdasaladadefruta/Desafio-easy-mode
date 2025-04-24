@@ -76,10 +76,18 @@
 
             var res = await fetch('https://desafio-easy-mode.onrender.com/validacao', {
                 method: "POST",
-                headers: "application/json",
+                headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ email, senha })
             })
+
+        
+
+
         }
+
+
+
+
 
 
     </script>
