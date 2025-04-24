@@ -1,88 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jake's Instagram Clone</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .stories {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 10px;
-      padding: 1rem;
-    }
-
-    .story {
-      flex: 0 0 auto;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      scroll-snap-align: start;
-    }
-
-    .story.active {
-      outline: 3px solid white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Carousel</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    .carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+        flex: 0 0 80%;
+        /* Mostra 80% da largura do container, deixando 20% visível do próximo */
+        margin-right: 20px;
+        /* Espaço entre os itens */
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    button.prev {
+        left: 10px;
+    }
+
+    button.next {
+        right: 10px;
+    }
+</style>
+
 <body>
-  <main class="app">
-    <header class="top-bar">
-      <div class="logo">Instagram</div>
-    </header>
-    <section class="stories">
-      <div class="story" style="--i:1"></div>
-      <div class="story" style="--i:2"></div>
-      <div class="story" style="--i:3"></div>
-      <div class="story" style="--i:4"></div>
-    </section>
-    <section class="posts">
-      <article class="post">
-        <header>
-          <div class="avatar"></div>
-          <div class="username">@jake</div>
-        </header>
-        <img class="post-img" src="https://placekitten.com/400/400" alt="Post image">
-        <footer>
-          <button class="like-btn">Like</button>
-          <button class="comment-btn">Comment</button>
-        </footer>
-      </article>
-    </section>
-  </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Like button logic
-      const likeButtons = document.querySelectorAll('.like-btn');
-      likeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          if (button.classList.contains('liked')) {
-            button.classList.remove('liked');
-            button.textContent = 'Like';
-          } else {
-            button.classList.add('liked');
-            button.textContent = 'Liked';
-          }
-        });
-      });
+    <div class="carousel">
+        <button class="prev">Prev</button>
+        <div class="carousel-inner">
+            <div class="carousel-item">Product 1</div>
+            <div class="carousel-item">Product 2</div>
+            <div class="carousel-item">Product 3</div>
+            <div class="carousel-item">Product 4</div>
+        </div>
+        <button class="next">Next</button>
+    </div>
 
-      // Carousel auto-scroll logic
-      const stories = document.querySelector('.stories');
-      let scrollAmount = 0;
-      const step = 100;
-      const interval = 3000;
 
-      setInterval(() => {
-        if (stories.scrollLeft + stories.offsetWidth >= stories.scrollWidth) {
-          stories.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          stories.scrollBy({ left: step, behavior: 'smooth' });
+    <script>
+        const carouselInner = document.querySelector('.carousel-inner');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const itemWidth = carouselItems[0].offsetWidth + parseInt(getComputedStyle(carouselItems[0]).marginRight);
+            carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
         }
-      }, interval);
-    });
-  </script>
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < carouselItems.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        window.addEventListener('resize', updateCarousel);
+        window.addEventListener('load', updateCarousel);
+
+    </script>
 </body>
+
 </html>
