@@ -33,17 +33,13 @@
         let classificacao = document.getElementById('classificacao')
 
         async function criarProduto() {
-            let res = 
 
-
-
+            let res = await fetch('https://desafio-easy-mode.onrender.com/jogo', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome, img, valor, descricao, classificacao })
+            })
         }
-
-
-
-
-
-
 
     </script>
 
