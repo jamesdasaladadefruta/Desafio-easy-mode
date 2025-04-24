@@ -28,7 +28,8 @@
     }
 
     header h1 {
-        color: #ffffff;
+        color: rgb(0, 255, 76);
+        text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
         margin-left: 20px;
     }
 
@@ -110,7 +111,7 @@
         <h1>Create a Product</h1>
         <div class="input-group">
             <input type="text" required id="nome">
-            <label for="">Nome</label>
+            <label for="">Name</label>
         </div>
         <div class="input-group">
             <input type="text" required id="img">
@@ -118,15 +119,15 @@
         </div>
         <div class="input-group">
             <input type="number" required id="valor">
-            <label for="">Valor</label>
+            <label for="">Value</label>
         </div>
         <div class="input-group">
             <input type="text" required id="descricao">
-            <label for="">Descrição</label>
+            <label for="">Description</label>
         </div>
         <div class="input-group">
             <input type="number" required id="classificacao">
-            <label for="">Classificação</label>
+            <label for="">Classification</label>
         </div>
         <button onclick="criarProduto()"> Create Product</button>
     </div>
