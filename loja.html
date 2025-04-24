@@ -2,60 +2,61 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Carousel</title>
-  <style>
-    body{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 100vh;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Carousel</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-    header{
-        display: flex;
-        background-color:greenyellow;
-        width: 100%;
-    }
-    h1{
-        margin-left:20px;
-    }
+        header {
+            display: flex;
+            background-color: greenyellow;
+            width: 100%;
+        }
 
-    .carousel {
-      width: 80%;
-      margin: auto;
-      overflow: hidden;
-      position: relative;
-    }
+        h1 {
+            margin-left: 20px;
+        }
 
-    .carousel-inner {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
+        .carousel {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .carousel-item {
-      flex: 0 0 33.3333%;
-      box-sizing: border-box;
-      padding: 10px;
-      text-align: center;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      transition: opacity 0.5s, transform 0.5s;
-    }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
 
-    .carousel-item.faded {
-      opacity: 0.3;
-      transform: scale(0.95);
-    }
+        .carousel-item {
+            flex: 0 0 33.3333%;
+            box-sizing: border-box;
+            padding: 10px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: opacity 0.5s, transform 0.5s;
+        }
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-  </style>
+        .carousel-item.faded {
+            opacity: 0.3;
+            transform: scale(0.95);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -69,82 +70,95 @@
 
 
 
-  <div class="carousel" >
-    <div class="carousel-inner" id="inner">
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
-      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+    <div class="carousel">
+        <div class="carousel-inner" id="inner">
+
+        </div>
+
     </div>
-  </div>
 
-  <script>
-    const carouselInner = document.querySelector('.carousel-inner');
-    let carouselItems = document.querySelectorAll('.carousel-item');
-    let totalItems = carouselItems.length;
-    let currentIndex = 0;
+    <script>
+        const carouselInner = document.querySelector('.carousel-inner');
+        let carouselItems = document.querySelectorAll('.carousel-item');
+        let totalItems = carouselItems.length;
+        let currentIndex = 0;
 
-    function updateCarousel() {
-      const itemWidth = carouselItems[0].offsetWidth;
-      carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-      updateOpacity();
-    }
-
-    function updateOpacity() {
-      carouselItems.forEach((item, index) => {
-        item.classList.remove('faded');
-        if (index < currentIndex || index > currentIndex + 2) {
-          item.classList.add('faded');
+        function updateCarousel() {
+            const itemWidth = carouselItems[0].offsetWidth;
+            carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            updateOpacity();
         }
-      });
-    }
 
-    function autoSlide() {
-      currentIndex++;
-      if (currentIndex + 3 > totalItems) {
-        currentIndex = 0;
-      }
-      updateCarousel();
-    }
+        function updateOpacity() {
+            carouselItems.forEach((item, index) => {
+                item.classList.remove('faded');
+                if (index < currentIndex || index > currentIndex + 2) {
+                    item.classList.add('faded');
+                }
+            });
+        }
 
-    window.addEventListener('resize', updateCarousel);
-    window.addEventListener('load', () => {
-      updateCarousel();
-      setInterval(autoSlide, 4500); // roda a cada 5 segundos
-    });
+        function autoSlide() {
+            currentIndex++;
+            if (currentIndex >= totalItems - 2) {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
+
+        window.addEventListener('resize', updateCarousel);
+        window.addEventListener('load', () => {
+            updateCarousel();
+            setInterval(autoSlide, 4500); // roda a cada 5 segundos
+        });
 
 
-    async function montarProdutos() {
-        let carousel = document.getElementById('inner')
+        async function montarProdutos() {
+            let carousel = document.getElementById('inner')
 
-        let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
 
-        let listaDeJogos = await res.json()
-
-        listaDeJogos.forEach((jogo)=> {
-            var divHtml = document.createElement('div')
-            divHtml.className = "carousel-item"
-
-            divHtml.innerHTML = `<img src="${jogo.img}">`
-            console.log(jogo)
-
-            carousel.appendChild(divHtml)
-        })
-
-        carouselItems = document.querySelectorAll('.carousel-item');
-        totalItems = carouselItems.length;
-
-        currentIndex = 0
-        updateCarousel()
-        
-    }
-
-    montarProdutos()
+            try {
 
 
 
+                let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
+
+                let listaDeJogos = await res.json()
+
+                listaDeJogos.forEach((jogo) => {
+                    var divHtml = document.createElement('div')
+                    divHtml.className = "carousel-item"
+
+                    divHtml.innerHTML = `<img src="${jogo.img}">`
+
+                    carousel.appendChild(divHtml)
+                })
+                requestAnimationFrame(() => {
+                    carouselItems = document.querySelectorAll('.carousel-item');
+                    totalItems = carouselItems.length;
+                    currentIndex = 0
+                    updateCarousel()
+
+                    setInterval(autoSlide, 4500);
+                })
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+
+        async function modalJogos() {
+            let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
+            let listaDeJogos = await res.json()
+
+
+
+
+
+
+
+        }
 
 
 
@@ -156,7 +170,24 @@
 
 
 
-  </script>
+
+
+        montarProdutos()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
 
 </html>
