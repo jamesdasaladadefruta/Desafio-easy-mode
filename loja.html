@@ -2,105 +2,101 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Carousel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-    .carousel {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Carousel</title>
+  <style>
+    body{
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80%;
-        margin: auto;
-        overflow: hidden;
-        position: relative;
+        min-height: 100vh;
+    }
+
+
+
+    .carousel {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
     }
 
     .carousel-inner {
-        display: flex;
-        transition: transform 0.5s ease;
+      display: flex;
+      transition: transform 0.5s ease;
     }
 
     .carousel-item {
-        flex: 0 0 80%;
-        /* Mostra 80% da largura do container, deixando 20% visível do próximo */
-        margin-right: 20px;
-        /* Espaço entre os itens */
-        box-sizing: border-box;
-        padding: 20px;
-        text-align: center;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 10px;
+      flex: 0 0 33.3333%;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: opacity 0.5s, transform 0.5s;
     }
 
-    button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 1;
+    .carousel-item.faded {
+      opacity: 0.3;
+      transform: scale(0.95);
     }
 
-    button.prev {
-        left: 10px;
+    img {
+      width: 100%;
+      border-radius: 10px;
     }
-
-    button.next {
-        right: 10px;
-    }
-</style>
+  </style>
+</head>
 
 <body>
-    <div class="carousel">
-        <button class="prev">Prev</button>
-        <div class="carousel-inner">
-            <div class="carousel-item">Product 1</div>
-            <div class="carousel-item">Product 2</div>
-            <div class="carousel-item">Product 3</div>
-            <div class="carousel-item">Product 4</div>
-        </div>
-        <button class="next">Next</button>
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
+      <div class="carousel-item"><img src="https://th.bing.com/th/id/R.0335a26c9f2ba4a98954f81accef132c?rik=Otr9NYOT3s%2b6qQ&pid=ImgRaw&r=0" alt=""></div>
     </div>
+  </div>
 
+  <script>
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const totalItems = carouselItems.length;
+    let currentIndex = 0;
 
-    <script>
-        const carouselInner = document.querySelector('.carousel-inner');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-        const carouselItems = document.querySelectorAll('.carousel-item');
+    function updateCarousel() {
+      const itemWidth = carouselItems[0].offsetWidth;
+      carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      updateOpacity();
+    }
 
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            const itemWidth = carouselItems[0].offsetWidth + parseInt(getComputedStyle(carouselItems[0]).marginRight);
-            carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    function updateOpacity() {
+      carouselItems.forEach((item, index) => {
+        item.classList.remove('faded');
+        if (index < currentIndex || index > currentIndex + 2) {
+          item.classList.add('faded');
         }
+      });
+    }
 
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
+    function autoSlide() {
+      currentIndex++;
+      if (currentIndex + 3 > totalItems) {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    }
 
-        nextButton.addEventListener('click', () => {
-            if (currentIndex < carouselItems.length - 1) {
-                currentIndex++;
-                updateCarousel();
-            }
-        });
-
-        window.addEventListener('resize', updateCarousel);
-        window.addEventListener('load', updateCarousel);
-
-    </script>
+    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('load', () => {
+      updateCarousel();
+      setInterval(autoSlide, 5000); // roda a cada 5 segundos
+    });
+  </script>
 </body>
 
 </html>
