@@ -13,9 +13,10 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
+        background-color: #000;
     }
 
-    div {
+    .container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -24,35 +25,85 @@
         width: 500px;
         height: 300px;
         border-radius: 10px;
-        gap: 10px;
+        gap: 5px;
         padding: 50px;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+        ;
     }
-    input{
+
+    input {
         padding: 8px 12px;
         border-radius: 4px;
     }
-    button{
+
+    button {
         padding: 10px 20px;
         background-color: #24ff00;
         border: none;
+        border-radius: 5px;
         cursor: pointer;
     }
 
 
-    div h1 {
+    .container h1 {
         color: rgb(0, 255, 76);
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
 
+    }
+
+    .input-group {
+        position: relative;
+        margin: 5px 0;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #fff;
+        padding: 0 5px;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .input-group input {
+        width: 320px;
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        padding: 0 10px;
+        background: transparent;
+        border: 1.2px solid #fff;
+        outline: none;
+        border-radius: 5px;
+    }
+
+    .input-group input:focus~label,
+    .input-group input:valid~label {
+        top: 0;
+        font-size: 12px;
+        background: #000000;
     }
 </style>
 
 <body>
 
-    <div>
+    <div class="container">
         <h1>Welcome</h1>
-        <input type="text" placeholder="Username" id="username">
-        <input type="email" placeholder="E-mail" id="email">
-        <input type="password" placeholder="Password" id="senha">
+        <div class="input-group">
+            <input type="text" required>
+            <label for="">Username</label>
+        </div>
+        <div class="input-group">
+            <input type="password" required>
+            <label for="">Password</label>
+        </div>
+        <div class="input-group">
+            <input type="password" required>
+            <label for="">Password</label>
+        </div>
         <button onclick="cadastrar()">Send</button>
     </div>
 
