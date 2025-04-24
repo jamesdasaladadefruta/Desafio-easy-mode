@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jake's Instagram Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .stories {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 1rem;
+    }
+
+    .story {
+      flex: 0 0 auto;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      scroll-snap-align: start;
+    }
+
+    .story.active {
+      outline: 3px solid white;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="top-bar">
+      <div class="logo">Instagram</div>
+    </header>
+    <section class="stories">
+      <div class="story" style="--i:1"></div>
+      <div class="story" style="--i:2"></div>
+      <div class="story" style="--i:3"></div>
+      <div class="story" style="--i:4"></div>
+    </section>
+    <section class="posts">
+      <article class="post">
+        <header>
+          <div class="avatar"></div>
+          <div class="username">@jake</div>
+        </header>
+        <img class="post-img" src="https://placekitten.com/400/400" alt="Post image">
+        <footer>
+          <button class="like-btn">Like</button>
+          <button class="comment-btn">Comment</button>
+        </footer>
+      </article>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Like button logic
+      const likeButtons = document.querySelectorAll('.like-btn');
+      likeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (button.classList.contains('liked')) {
+            button.classList.remove('liked');
+            button.textContent = 'Like';
+          } else {
+            button.classList.add('liked');
+            button.textContent = 'Liked';
+          }
+        });
+      });
+
+      // Carousel auto-scroll logic
+      const stories = document.querySelector('.stories');
+      let scrollAmount = 0;
+      const step = 100;
+      const interval = 3000;
+
+      setInterval(() => {
+        if (stories.scrollLeft + stories.offsetWidth >= stories.scrollWidth) {
+          stories.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          stories.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      }, interval);
+    });
+  </script>
+</body>
+</html>
