@@ -8,8 +8,7 @@
 </head>
 
 <style>
-
-body {
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -18,18 +17,20 @@ body {
         background-color: #000;
     }
 
-header{
-    width: 100%;
-    position: absolute;
-    top: 0px;
+    header {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        display: flex;
+        border-radius: 2.5px;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+        ;
+    }
 
-    display: flex;
-    border-radius: 2.5px;    
-    box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;; 
-}
-header h1{
-    color: #ffffff;
-}
+    header h1 {
+        color: #ffffff;
+        margin-left: 20px;
+    }
 
     .container {
         display: flex;
@@ -40,7 +41,8 @@ header h1{
         width: 600px;
         height: 475px;
         border-radius: 10px;
-        box-shadow:1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+        ;
     }
 
     .container h1 {
@@ -48,6 +50,7 @@ header h1{
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
 
     }
+
     button {
         padding: 10px 20px;
         background-color: #24ff00;
@@ -97,15 +100,15 @@ header h1{
 
 <body>
     <header>
-       <h1>Welcome</h1>
-       <h1 id="user"></h1>
-    
+        <h1>Welcome</h1>
+        <h1 id="user"></h1>
+
     </header>
 
-  
+
     <div class="container">
         <h1>Create a Product</h1>
-          <div class="input-group">
+        <div class="input-group">
             <input type="text" required id="nome">
             <label for="">Nome</label>
         </div>
