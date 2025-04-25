@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Carousel</title>
     <style>
-        
+
         body {
             display: flex;
             align-items: center;
@@ -213,6 +213,7 @@
             <button class="close-btn" onclick="fecharModal()">×</button>
             <h2>${jogo.nome}</h2>
             <img src="${jogo.img}" alt="${jogo.nome}">
+            <p>${jogo.valor}R$</p>
             <p>${jogo.descricao || "Sem descrição disponível."}</p>
             <button>Buy</button>
             
