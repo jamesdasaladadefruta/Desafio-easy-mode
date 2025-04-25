@@ -97,9 +97,17 @@
         background: #000000;
 
     }
-    #user{
+
+    #user {
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #ff0000, 0 0 3vw #ff0000d5, 0 0 3vw #e71a1a;
         color: #ff0000;
+    }
+
+    img {
+        width: 50px;
+        position: absolute;
+        top: 30;
+        right: 0;
     }
 </style>
 
@@ -109,6 +117,9 @@
         <h1 class="welcome">Welcome</h1>
         <h1 id="user"></h1>
 
+        <a href="loja.html">
+            <img src="game-center.png" alt="">
+        </a>
     </header>
 
 
@@ -135,6 +146,9 @@
             <label for="">Classification</label>
         </div>
         <button onclick="criarProduto()"> Create Product</button>
+
+
+
     </div>
 
     <script>
@@ -157,9 +171,9 @@
         async function logins() {
             let user = document.getElementById('user')
             let nome = localStorage.getItem("usuarioNome");
-         
 
-            if(nome){
+
+            if (nome) {
 
                 user.textContent = nome
 
