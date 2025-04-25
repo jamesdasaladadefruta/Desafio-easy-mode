@@ -27,7 +27,7 @@
         ;
     }
 
-    header h1 {
+    .welcome {
         color: rgb(0, 255, 76);
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
         margin-left: 5px;
@@ -97,12 +97,16 @@
         background: #000000;
 
     }
+    #user{
+        text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #ff0000, 0 0 3vw #ff0000d5, 0 0 3vw #e71a1a;
+        color: #ff0000;
+    }
 </style>
 
 <body onload="logins()">
 
     <header>
-        <h1>Welcome</h1>
+        <h1 class="welcome">Welcome</h1>
         <h1 id="user"></h1>
 
     </header>
