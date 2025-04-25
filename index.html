@@ -94,7 +94,7 @@
 <body>
 
     <div class="container">
-        <h1>Welcome</h1>
+        <h1>Welcome <span id="user"></span></h1>
         <div class="input-group">
             <input type="email" required id="email">
             <label for="">E-mail</label>
@@ -147,17 +147,14 @@
 
                 if (usuario) {
                     localStorage.setItem('usuarioNome', usuario.nome)
-                    window.location.href = "cadProduto.html"
+                    window.location.href = "loja.html"
                 }
             } else {
                 alert("E-mail ou senha incorretos")
             }
         }
 
-
-
-
-
+       
 
     </script>
 </body>
