@@ -87,7 +87,7 @@
             background-color: #fff;
             padding: 30px;
             border-radius: 10px;
-            width: 400px;
+            width: 800px;
             text-align: center;
             position: relative;
         }
@@ -221,7 +221,6 @@
             const modal = document.getElementById('modal')
             const modalContent = document.getElementById('modal-content')
 
-
             let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
             let listaDeJogos = await res.json()
 
@@ -232,7 +231,6 @@
             <p>${jogo.valor}R$</p>
             <p>${jogo.descricao || "Sem descrição disponível."}</p>
             <button>Buy</button>
-            
             `
 
             modal.style.display = 'flex';

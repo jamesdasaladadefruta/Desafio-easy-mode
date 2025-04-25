@@ -86,6 +86,13 @@
         font-size: 12px;
         background: #000000;
     }
+
+    a{
+        text-decoration: none;
+         color: rgb(0, 110, 255);
+    }
+
+
 </style>
 
 <body>
@@ -105,12 +112,12 @@
             <label for="">Password</label>
         </div>
         <button onclick="cadastrar()">Send</button>
+
+        <a href="index.html">Return to login</a>
+        
     </div>
 
     
-
-
-
 
     <script>
 
@@ -129,11 +136,7 @@
                     body: JSON.stringify({ nome, email, senha })
                 }
             )
-
-           
         }
-
-
 
     </script>
 </body>
