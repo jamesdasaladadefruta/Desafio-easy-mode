@@ -30,7 +30,7 @@
     .welcome {
         color: rgb(0, 255, 76);
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
-        margin-left: 20px;
+        margin-left: 5px;
     }
 
     .container {
@@ -103,7 +103,8 @@
     }
 </style>
 
-<body>
+<body onload="logins()">
+
     <header>
         <h1 class="welcome">Welcome</h1>
         <h1 id="user"></h1>
@@ -155,9 +156,18 @@
 
         async function logins() {
             let user = document.getElementById('user')
-            let res = await fetch('https://desafio-easy-mode.onrender.com/userl')
-            let listaDeNomes = res.json()
+            let nome = localStorage.getItem("usuarioNome");
+         
+
+            if(nome){
+
+                user.textContent = nome
+
+            }
+
         }
+
+
 
 
 
