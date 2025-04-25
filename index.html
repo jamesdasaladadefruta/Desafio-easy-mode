@@ -25,7 +25,8 @@
         width: 500px;
         height: 300px;
         border-radius: 10px;
-        box-shadow:1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+        ;
     }
 
     .container h1 {
@@ -33,6 +34,7 @@
         text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
 
     }
+
     button {
         padding: 10px 20px;
         background-color: #24ff00;
@@ -78,10 +80,12 @@
         background: #000000;
 
     }
-    p{
+
+    p {
         color: #ffffff;
     }
-    a{
+
+    a {
         text-decoration: none;
         color: rgb(0, 110, 255);
     }
@@ -135,9 +139,18 @@
             })
 
             if (res.status === 200) {
-                window.location.href = "loja.html"
+
+                let resposta = await fetch('https://desafio-easy-mode.onrender.com/userl')
+                let dados = await resposta.json()
+
+                let usuario = dados.find(user => user.email === email && user.senha === senha);
+
+                if (usuario) {
+                    localStorage.setItem('usuarioNome', usuario.nome)
+                    window.location.href = "cadProduto.html"
+                }
             } else {
-               alert("E-mail ou senha incorretos")
+                alert("E-mail ou senha incorretos")
             }
         }
 
