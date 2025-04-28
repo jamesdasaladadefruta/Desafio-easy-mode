@@ -146,7 +146,7 @@
             <input type="number" required id="classificacao">
             <label for="">Classification</label>
         </div>
-        <button onclick="criarProduto()"> Create Product</button>
+        <button onclick="criarProduto()" id="button"> Create Product</button>
 
 
 
@@ -168,7 +168,7 @@
                 body: JSON.stringify({ nome, img, valor, descricao, classificacao })
             })
         }
-
+        
         async function logins() {
             let user = document.getElementById('user')
             let nome = localStorage.getItem("usuarioNome");
@@ -176,10 +176,16 @@
 
             if (nome) {
                 user.textContent = nome
-
             }
 
         }
+        var btn = document.getElementById('button')
+
+document.addEventListener('keypress' , function(event){
+    if(event.key === "Enter"){
+        cadastrar()
+    }
+})
 
 
 
