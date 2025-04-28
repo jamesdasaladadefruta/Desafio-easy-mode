@@ -29,6 +29,7 @@
         padding: 50px;
         box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
         ;
+        z-index: 999;
     }
 
     input {
@@ -87,15 +88,128 @@
         background: #000000;
     }
 
-    a{
+    a {
         text-decoration: none;
-         color: rgb(0, 110, 255);
+        color: rgb(0, 110, 255);
+    }
+
+    .glowing-ball-b {
+        width: 400px;
+        right: 0px;
+        height: 400px;
+        background-color: #00ff4c;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 1;
+        box-shadow: 1vw 1vw 1vw 1vw #00ff4c, 0 0 3vw 1vw #24ff00, 0 0 3vw 1vw #24ff00, 0 0 3vw 1vw #24ff00;
+        animation: float2 2.5s ease-in-out infinite;
     }
 
 
+    .glowing-ball {
+        width: 400px;
+        height: 400px;
+        background-color: #00ff4c;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+        position: absolute;
+        left: 0;
+        animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateX(100px);
+        }
+
+        10% {
+            transform: translateY(150px);
+        }
+
+        15% {
+            transform: translateX(-150px);
+        }
+
+        25% {
+            transform: translateY(200px);
+        }
+
+        35% {
+            transform: translateX(-200px);
+
+        }
+
+        50% {
+            transform: translateX(300px);
+        }
+
+        65% {
+            transform: translateY(300px);
+        }
+
+        75% {
+            transform: translateX(500px);
+        }
+
+        85% {
+            transform: translateY(-500px);
+        }
+
+        100% {
+            transform: translateX(700px);
+        }
+    }
+
+    @keyframes float2 {
+        0% {
+            transform: translateX(-100px);
+        }
+
+        10% {
+            transform: translateY(-150px);
+        }
+
+        15% {
+            transform: translateX(-150px);
+        }
+
+        25% {
+            transform: translateY(-200px);
+        }
+
+        35% {
+            transform: translateX(200px);
+
+        }
+
+        50% {
+            transform: translateX(300px);
+        }
+
+        65% {
+            transform: translateY(-300px);
+        }
+
+        75% {
+            transform: translateX(-500px);
+        }
+
+        85% {
+            transform: translateY(-500px);
+        }
+
+        100% {
+            transform: translateX(-700px);
+        }
+
+    }
 </style>
 
 <body>
+
+    <div class="glowing-ball"></div>
+    <div class="glowing-ball-b"></div>
 
     <div class="container">
         <h1>Welcome</h1>
@@ -111,13 +225,13 @@
             <input type="password" required id="senha">
             <label for="">Password</label>
         </div>
-        <button onclick="cadastrar()">Send</button>
+        <button onclick="cadastrar()" id="button">Send</button>
 
         <a href="index.html">Return to login</a>
-        
+
     </div>
 
-    
+
 
     <script>
 
@@ -129,6 +243,11 @@
 
             let senha = document.getElementById("senha").value
 
+            if (nome == "" || nome == null || email == "" || email == null || senha == "" || senha == null) {
+                alert("Send a valid value!")
+                return
+            }
+
             var cadastro = await fetch('https://desafio-easy-mode.onrender.com/userc',
                 {
                     method: "POST",
@@ -137,6 +256,15 @@
                 }
             )
         }
+
+        var btn = document.getElementById('button')
+
+        document.addEventListener('keypress', function (event) {
+            if (event.key === "Enter") {
+                cadastrar()
+                alert("Sucessfull send!")
+            }
+        })
 
     </script>
 </body>
