@@ -15,19 +15,19 @@ const db = new sqlite3.Database("./db.sqlite")
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS jogos(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome varchar(100),
-        img TEXT,
-        valor FLOAT,
-        descricao TEXT,
-        classificacao TEXT
-    )`);
+        nome varchar(100) NOT NULL,
+        img TEXT NOT NULL,
+        valor FLOAT NOT NULL,
+        descricao TEXT NOT NULL,
+        classificacao TEXT NOT NULL
+    )`)
 
     db.run(`CREATE TABLE IF NOT EXISTS login(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome varchar(100),
-        email varchar(100),
-        senha varchar(30)
-    )`);
+        nome varchar(100) NOT NULL,
+        email varchar(100) NOT NULL,
+        senha varchar(30) NOT NULL
+    )`)
 })
 
 
@@ -47,6 +47,11 @@ app.post("/jogo", (req, res) => {
 
     db.run(`INSERT INTO jogos(nome,img,valor,descricao,classificacao) VALUES(?,?,?,?,?)`, [nome, img, valor, descricao, classificacao])
 })
+
+
+
+
+
 
 
 app.post("/userc", (req, res) => {
