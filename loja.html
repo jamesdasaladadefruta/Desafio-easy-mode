@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop</title>
+    <title>Loja</title>
     <style>
         body {
             display: flex;
@@ -32,7 +32,8 @@
         .welcome {
             margin-left: 20px;
             color: rgb(0, 255, 13);
-            text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;;
+            text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
+            ;
         }
 
         .carousel {
@@ -68,6 +69,8 @@
         img {
             width: 100%;
             border-radius: 10px;
+            max-width: 100%;
+
         }
 
         .modal {
@@ -84,17 +87,18 @@
         }
 
         .modal-content {
-            background-color: #fff;
-            padding: 30px;
+            background-color: #e4dede;
             border-radius: 10px;
-            width: 800px;
             text-align: center;
+            width: 1100px;
+            padding: 20px;
             position: relative;
         }
 
         .modal-content img {
-            max-width:100%;
+            max-width: 600px;
             border-radius: 10px;
+            object-fit: cover;
         }
 
         .modal-content h2 {
@@ -110,10 +114,52 @@
             background: none;
             border: none;
         }
-        #user{
-            text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #ff0000, 0 0 3vw #ff0000d5, 0 0 3vw #e71a1a;
-            color: #ff0000;;
+
+        #user {
+            text-shadow: 1vw 1vw 1vw #000, 0 0 3vw #3351d3, 0 0 3vw #3351d3, 0 0 3vw #3351d3;
+            color: #3351d3;
+            ;
             margin-left: 15px;
+        }
+
+        .conteudo {
+            display: flex;
+            justify-content: flex-start;
+            gap: 200px;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .valor {
+            display: flex;
+            position: absolute;
+            gap: 20px;
+            right: 30px;
+            bottom: 10px;
+        }
+
+        .btn {
+            background-color: #00ff4c;
+            padding: 0px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        #logout {
+            text-decoration: none;
+            color: red;
+            font-size: 18px;
+        }
+
+        .logout {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+
         }
     </style>
 </head>
@@ -123,8 +169,14 @@
     <header>
         <h1 class="welcome">Welcome</h1>
         <h1 id="user"></h1>
-       
-        <img src="" alt="">
+
+        <div class="logout">
+            <a href="index.html" id="logout">Want'to logout click here</a>
+        </div>
+
+        </div>
+
+
     </header>
 
 
@@ -188,14 +240,11 @@
                     var divHtml = document.createElement('div')
                     divHtml.className = "carousel-item"
 
-                    divHtml.innerHTML = `<img src="${jogo.img}">`
-
+                    divHtml.innerHTML = `<img src="${jogo.img}"><button class='btn'>Buy Game</button>`
 
                     divHtml.addEventListener('click', () => {
                         abrirModal(jogo)
                     })
-
-
 
                     carousel.appendChild(divHtml)
                 })
@@ -225,12 +274,20 @@
             let listaDeJogos = await res.json()
 
             modalContent.innerHTML = `
-            <button class="close-btn" onclick="fecharModal()">×</button>
-            <h2>${jogo.nome}</h2>
-            <img src="${jogo.img}" alt="${jogo.nome}">
-            <p>${jogo.valor}R$</p>
-            <p>${jogo.descricao || "Sem descrição disponível."}</p>
-            <button>Buy</button>
+           
+            <div class="conteudo">
+                <button class="close-btn" onclick="fecharModal()">×</button>
+                <img src="${jogo.img}" alt="${jogo.nome}">
+                <div class="description">
+                <h2>${jogo.nome}</h2>
+                <p>${jogo.descricao || "Sem descrição disponível."}</p>
+                <div class='valor'>
+                <p>${jogo.valor}R$</p>
+                <button class='btn'>Buy</button>
+                </div>
+             </div>     
+
+            </div>   
             `
 
             modal.style.display = 'flex';
@@ -238,8 +295,15 @@
         }
 
         function fecharModal() {
-            document.getElementById('modal').style.display = "none"
+            var modal = document.getElementById('modal')
+            modal.style.display = "none"
         }
+
+        document.getElementById('modal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                fecharModal()
+            }
+        });
 
         async function logins() {
             let user = document.getElementById('user')
@@ -253,29 +317,13 @@
 
         }
 
+        function out() {
+            localStorage.clear()
+        }
 
         window.onload = logins;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        document.getElementById('logout').addEventListener('click', out);
 
 
 
