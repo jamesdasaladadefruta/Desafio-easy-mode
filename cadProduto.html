@@ -8,6 +8,16 @@
 </head>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        font-family: "Roboto", sans-serif;
+    }
+
+
+
+
+
     body {
         display: flex;
         flex-direction: column;
@@ -168,7 +178,7 @@
                 body: JSON.stringify({ nome, img, valor, descricao, classificacao })
             })
         }
-        
+
         async function logins() {
             let user = document.getElementById('user')
             let nome = localStorage.getItem("usuarioNome");
@@ -181,11 +191,11 @@
         }
         var btn = document.getElementById('button')
 
-document.addEventListener('keypress' , function(event){
-    if(event.key === "Enter"){
-        cadastrar()
-    }
-})
+        document.addEventListener('keypress', function (event) {
+            if (event.key === "Enter") {
+                cadastrar()
+            }
+        })
 
 
 
