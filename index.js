@@ -4,7 +4,8 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import cron from "node-cron"
 import fetch from "node-fetch";
-
+import { dirname } from "path"
+import { fileURLToPath } from "url"
 
 
 const app = express()
@@ -38,7 +39,9 @@ db.serialize(() => {
 
 
 app.get("/home", (req, res) => {
-
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    res.sendFile("loja.html", {root: __dirname})
 })
 
 app.get("/jogos", (req, res) => {
