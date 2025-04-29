@@ -116,6 +116,14 @@
         top: 30;
         right: 0;
     }
+    .gerenciar{
+        display: flex;
+        background-color: #fff;
+    }
+
+
+
+
 </style>
 
 <body onload="logins()">
@@ -205,6 +213,7 @@
             let listaDeJogos = await res.json()
             let ul = document.getElementById('produtos')
 
+            ul.innerHTML = ""
             listaDeJogos.forEach(jogo => {
                 let li = document.createElement('li')
                 li.innerHTML = `<h1>${jogo.nome}</h1><button onclick='apagarJogo(${jogo.id})'>Excluir Jogo</button>`
