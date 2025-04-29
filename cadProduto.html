@@ -14,10 +14,6 @@
         font-family: "Roboto", sans-serif;
     }
 
-
-
-
-
     body {
         display: flex;
         flex-direction: column;
@@ -157,10 +153,17 @@
             <label for="">Classification</label>
         </div>
         <button onclick="criarProduto()" id="button">Create Product</button>
+    </div>
 
+    <div class="gerenciar" >
+        <ul id="produtos">
 
+        </ul>
 
     </div>
+
+
+
 
     <script>
 
@@ -197,15 +200,31 @@
             }
         })
 
+        async function mostrarJogos() {
+            let res = await fetch('https://desafio-easy-mode.onrender.com/jogos')
+            let listaDeJogos = await res.json()
+            let ul = document.getElementById('produtos')
+
+            listaDeJogos.forEach(jogo => {
+                let li = document.createElement('li')
+                li.innerHTML = `<h1>${jogo.nome}</h1><button onclick='apagarJogo(${jogo.id})'>Excluir Jogo</button>`
+                ul.appendChild(li)
+            })
+
+            
 
 
+        }
 
+        async function apagarJogo(id) {
 
+            let res = await fetch(`https://desafio-easy-mode.onrender.com/deletar/${id}`, {
+                method: "DELETE"
+            })
+            mostrarJogos()
+        }
 
-
-
-
-
+        mostrarJogos()
     </script>
 
 
