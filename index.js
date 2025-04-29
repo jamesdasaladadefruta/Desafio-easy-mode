@@ -74,6 +74,12 @@ app.post("/jogo", (req, res) => {
     res.send('Produto cadastrado')
 })
 
+app.delete('/deletar/:id',(req,res)=>{
+    db.run(`DELETE FROM jogos WHERE id == (?)`,[req.params.id])
+    res.send("Deletado com sucesso")
+
+})
+
 
 
 app.post("/userc", (req, res) => {
