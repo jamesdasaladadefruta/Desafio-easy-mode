@@ -2,12 +2,18 @@ import express from "express"
 import sqlite3 from "sqlite3"
 import cors from "cors"
 import bodyParser from "body-parser"
+import cron from "node-cron"
+import fetch from "node-fetch";
+
+
 
 const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(cors())
+
+const url = 'https://desafio-easy-mode.onrender.com/jogos'
 
 
 const db = new sqlite3.Database("./db.sqlite")
@@ -46,11 +52,8 @@ app.post("/jogo", (req, res) => {
     const { nome, img, valor, descricao, classificacao } = req.body
 
     db.run(`INSERT INTO jogos(nome,img,valor,descricao,classificacao) VALUES(?,?,?,?,?)`, [nome, img, valor, descricao, classificacao])
+    res.send('Produto cadastrado')
 })
-
-
-
-
 
 
 
@@ -94,3 +97,14 @@ app.post('/validacao', (req, res) => {
 app.listen(8080, () => {
     console.log("Servidor aberto na porta 8080")
 })
+
+cron.schedule('*/14 * * * *', async () => {
+    try {
+      const res = await fetch(url);
+      const status = res.status;
+      console.log(`[${new Date().toLocaleTimeString()}] Ping enviado! Status: ${status}`);
+    } catch (error) {
+      console.error(`[${new Date().toLocaleTimeString()}] Erro ao enviar ping:`, error);
+    }
+  });
+
