@@ -44,6 +44,22 @@ app.get("/home", (req, res) => {
     res.sendFile("index.html", {root: __dirname})
 })
 
+app.get("/cadastrohtml", (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    res.sendFile("cadastro.html", {root: __dirname})
+})
+app.get("/cadastrop", (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    res.sendFile("cadProduto.html", {root: __dirname})
+})
+app.get("/loja", (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    res.sendFile("loja.html", {root: __dirname})
+})
+
 app.get("/jogos", (req, res) => {
     db.all(`SELECT * FROM jogos `, [], (err, rows) => {
         res.json(rows)
