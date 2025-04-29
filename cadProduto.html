@@ -228,12 +228,9 @@
                 li.innerHTML = `<h1>${jogo.nome}</h1><button onclick='apagarJogo(${jogo.id})'>Excluir Jogo</button>`
                 ul.appendChild(li)
             })
-
-            
-
-
         }
 
+        
         async function apagarJogo(id) {
 
             let res = await fetch(`https://desafio-easy-mode.onrender.com/deletar/${id}`, {
