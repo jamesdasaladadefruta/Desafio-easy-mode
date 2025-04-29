@@ -257,7 +257,7 @@
                     var divHtml = document.createElement('div')
                     divHtml.className = "carousel-item"
 
-                    divHtml.innerHTML = `<img src="${jogo.img}" id='imgcarosel'><button class='btn'>Buy Game</button>`
+                    divHtml.innerHTML = `<img src="${jogo.img}" id='imgcarosel'><button class='btn' >Buy Game</button>`
 
                     divHtml.addEventListener('click', () => {
                         abrirModal(jogo)
@@ -300,7 +300,7 @@
                 <p>${jogo.descricao || "Sem descrição disponível."}</p>
                 <div class='valor'>
                 <p>${jogo.valor}R$</p>
-                <button class='btn'>Buy</button>
+                <button class='btn' onclick='compra()'>Buy</button>
                 </div>
              </div>     
 
@@ -322,6 +322,21 @@
             }
         });
 
+        function compra(){
+            let nome = localStorage.getItem("usuarioNome");
+            if(nome){
+                alert("Compra realizada com sucesso! " + nome + " verifique no carrinho")
+            }
+            else{
+                alert("Cadastre-se para realizar uma compra")
+            }
+
+        }
+
+
+
+
+
         async function logins() {
             let user = document.getElementById('user')
             let nome = localStorage.getItem("usuarioNome");
@@ -341,7 +356,7 @@
         window.onload = logins;
 
         document.getElementById('logout').addEventListener('click', out);
-
+        
 
 
 
