@@ -118,6 +118,7 @@
         right: 0;
     }
     .gerenciar{
+
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
@@ -130,7 +131,8 @@
     li{
         color: white;
         list-style: none;
-    }
+    }      
+
 </style>
 
 <body onload="logins()">
@@ -220,6 +222,7 @@
             let listaDeJogos = await res.json()
             let ul = document.getElementById('produtos')
 
+            ul.innerHTML = ""
             listaDeJogos.forEach(jogo => {
                 let li = document.createElement('li')
                 li.innerHTML = `<h1>${jogo.nome}</h1><button onclick='apagarJogo(${jogo.id})'>Excluir Jogo</button>`
