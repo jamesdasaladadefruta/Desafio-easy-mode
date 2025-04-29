@@ -118,15 +118,15 @@
         right: 0;
     }
     .gerenciar{
-
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
         background-color: #000000;
-    box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;;
+        box-shadow: 1vw 1vw 1vw #00ff4c, 0 0 3vw #24ff00, 0 0 3vw #24ff00, 0 0 3vw #24ff00;
     }
     ul{
         display: flex;
+        align-items: center;
     }
     li{
         color: white;
@@ -230,7 +230,7 @@
             })
         }
 
-        
+
         async function apagarJogo(id) {
 
             let res = await fetch(`https://desafio-easy-mode.onrender.com/deletar/${id}`, {
