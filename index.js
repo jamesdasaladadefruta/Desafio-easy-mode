@@ -75,7 +75,7 @@ app.post("/jogo", (req, res) => {
 })
 
 app.delete('/deletar/:id',(req,res)=>{
-    db.run(`DELETE FROM jogos WHERE id == (?)`,[req.params.id])
+    db.run(`DELETE FROM jogos WHERE id = (?)`,[req.params.id])
     res.send("Deletado com sucesso")
 
 })
