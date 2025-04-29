@@ -41,7 +41,7 @@ db.serialize(() => {
 app.get("/home", (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
-    res.sendFile("loja.html", {root: __dirname})
+    res.sendFile("index.html", {root: __dirname})
 })
 
 app.get("/jogos", (req, res) => {
