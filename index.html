@@ -7,6 +7,12 @@
     <title>Login</title>
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        font-family: "Roboto", sans-serif;
+    }
+
     body {
         display: flex;
         flex-direction: column;
@@ -121,88 +127,108 @@
         0% {
             transform: translateX(100px);
         }
-        10%{
+
+        10% {
             transform: translateY(150px);
         }
-        15%{
+
+        15% {
             transform: translateX(-150px);
         }
+
         25% {
             transform: translateY(200px);
         }
-        35%{
+
+        35% {
             transform: translateX(-200px);
-            
+
         }
+
         50% {
             transform: translateX(300px);
         }
-        65%{
+
+        65% {
             transform: translateY(300px);
         }
+
         75% {
             transform: translateX(500px);
         }
-        85%{
+
+        85% {
             transform: translateY(-500px);
         }
+
         100% {
             transform: translateX(700px);
         }
     }
-    @keyframes float2{
+
+    @keyframes float2 {
         0% {
             transform: translateX(-100px);
         }
-        10%{
+
+        10% {
             transform: translateY(-150px);
         }
-        15%{
+
+        15% {
             transform: translateX(-150px);
         }
+
         25% {
             transform: translateY(-200px);
         }
-        35%{
+
+        35% {
             transform: translateX(200px);
-            
+
         }
+
         50% {
             transform: translateX(300px);
         }
-        65%{
+
+        65% {
             transform: translateY(-300px);
         }
+
         75% {
             transform: translateX(-500px);
         }
-        85%{
+
+        85% {
             transform: translateY(-500px);
         }
+
         100% {
             transform: translateX(-700px);
         }
-        
+
     }
-    @media screen and (max-width:800px){
-        .glowing-ball{
+
+    @media screen and (max-width:800px) {
+        .glowing-ball {
             width: 200px;
             height: 200px;
         }
-        .glowing-ball-b{
+
+        .glowing-ball-b {
             width: 200px;
             height: 200px;
         }
-        .container{
-            width:95%;
+
+        .container {
+            width: 95%;
             height: 70%;
         }
 
 
 
-    } 
-        
-    
+    }
 </style>
 
 <body>
