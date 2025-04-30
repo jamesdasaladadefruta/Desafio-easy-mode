@@ -11,6 +11,7 @@
         * {
             font-family: "Roboto", sans-serif;
         }
+
         body {
             display: flex;
             align-items: center;
@@ -176,12 +177,10 @@
 
         }
 
-        #imgcarosel{
+        #imgcarosel {
             width: 100%;
-            height:300px;
+            height: 300px;
         }
-
-
     </style>
 </head>
 
@@ -301,12 +300,18 @@
                 <p>${jogo.descricao || "Sem descrição disponível."}</p>
                 <div class='valor'>
                 <p>${jogo.valor}R$</p>
-                <button class='btn' onclick='compra()'>Buy</button>
+                <button class='btn' id='botao-compra'>Buy</button>
                 </div>
              </div>     
-
             </div>   
             `
+            let botaoCompra = document.getElementById('botao-compra')
+
+            botaoCompra.addEventListener('click', () => {
+                compra(jogo)
+            })
+
+
 
             modal.style.display = 'flex';
 
@@ -323,14 +328,19 @@
             }
         });
 
-        function compra(){
+        function compra(jogo) {
+
             let nome = localStorage.getItem("usuarioNome");
-            if(nome){
-                alert("Compra realizada com sucesso! " + nome)
-            }
-            else{
-                alert("Cadastre-se para realizar uma compra")
-            }
+
+            let carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]')
+            carrinho.push(jogo)
+            console.log(carrinho)
+
+            localStorage.setItem('carrinho', JSON.stringify(carrinho))
+
+
+            alert("Compra realizada com sucesso! " + nome)
+            window.location.href = 'carrinho.html'
 
         }
 
@@ -353,7 +363,7 @@
         window.onload = logins;
 
         document.getElementById('logout').addEventListener('click', out)
-        
+
 
 
 
