@@ -59,6 +59,11 @@ app.get("/loja", (req, res) => {
     const __dirname = dirname(__filename);
     res.sendFile("loja.html", {root: __dirname})
 })
+app.get("/carrinho", (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    res.sendFile("carrinho.html", {root: __dirname})
+})
 
 app.get("/jogos", (req, res) => {
     db.all(`SELECT * FROM jogos `, [], (err, rows) => {
