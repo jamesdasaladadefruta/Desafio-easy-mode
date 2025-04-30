@@ -4,8 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrinho</title>
 </head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+        min-height: 100vh;
+    }
+    .container{
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+    img{
+        width: 300px;
+        border-radius: 10px;
+    }
+
+    .carrinho{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+    }
+
+    .divCarrinho{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        
+
+
+
+
+</style>
+
+
 
 <body>
 
@@ -25,7 +64,7 @@
             let divHTML = document.getElementById('carrinho')
 
             if (carrinho.length === 0) {
-                divHTML.innerText = `Don't have items here, buy first`;
+                divHTML.innerText = `Don't have items here, buy first`
                 return;
             }
 
@@ -42,10 +81,12 @@
             for (let nome in jogosContados) {
                 let jogo = jogosContados[nome]
 
-                
-                let div = document.createElement('div')
 
-                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}</p><button onclick='apagarJogo(${jogo.id})'>Apagar</button>`
+                let div = document.createElement('div')
+                div.className = "divCarrinho"
+
+
+                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}R$</p><button onclick='apagarJogo(${jogo.id})'>Delete</button>`
                 divHTML.appendChild(div)
             }
         }
