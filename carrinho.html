@@ -12,7 +12,7 @@
     <div class="container">
 
         <div class="carrinho" id="carrinho">
-            
+
         </div>
 
     </div>
@@ -23,6 +23,11 @@
         async function montarCarrinho() {
             let carrinho = JSON.parse(localStorage.getItem('carrinho' || '[]'))
             let divHTML = document.getElementById('carrinho')
+
+            if (carrinho.length === 0) {
+                divHTML.innerText = `Don't have items here, buy first`;
+                return;
+            }
 
             let jogosContados = {}
             let quantidade
@@ -38,6 +43,8 @@
                 let jogo = jogosContados[nome]
 
                 let div = document.createElement('div')
+
+
                 div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'<p>${jogo.valor}</p><button onclick='apagarJogo(${jogo.id})'>Apagar</button>`
                 divHTML.appendChild(div)
             }
