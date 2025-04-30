@@ -15,15 +15,19 @@
 
     body {
         display: flex;
+      background-color: #000;
         flex-direction: column;
         align-items: center;
+        gap: 90px;
         justify-content: stretch;
         min-height: 100vh;
+        margin: 0px;
     }
 
     .container {
         padding: 10px;
         border: 2px solid black;
+        box-shadow: 1vw 1vw 1vw #0a8db4, 0 0 3vw #003cff, 0 0 3vw #11a7d4, 0 0 3vw #4c00ff;
         border-radius: 10px;
         width: auto;
     }
@@ -38,20 +42,54 @@
         grid-template-columns: 1fr 1fr 1fr;
         padding: 10px;
         gap: 10px;
+        color: white;
     }
 
     .divCarrinho {
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 2px solid black;
         padding: 20px;
+    }
+    header{
+        background-color: rgb(10, 3, 3);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+        box-shadow: 1vw 1vw 1vw #10d1df, 0 0 3vw #2702fa, 0 0 3vw #0a5674, 0 0 3vw #1100ff;
+    }
+    h1{
+      margin-left: 10px;
+        color: rgb(0, 204, 255);
+        text-shadow: 1vw 1vw 1vw  #000, 1vw 0 3vw #0a92e0, 0 0 3vw #0bcce6d5, 0 0 3vw #e71a1a;
+    }
+    .btn-shop{
+        color: whitesmoke;
+        border: 0px;
+        width: 100px;
+        border-radius: 10px;
+        padding: 9px;
+        background-color: #0074f8;
+        cursor: pointer;
+    }
+    a{
+        margin-right: 15px;
+        color: red;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 20px;
     }
 </style>
 
 
 
 <body>
+    <header >
+        <h1>It's your shop cart</h1>
+        <a href="https://desafio-easy-mode.onrender.com/loja">return to shop</a>
+    </header>
 
     <div class="container">
 
@@ -91,7 +129,7 @@
                 div.className = "divCarrinho"
 
 
-                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}R$</p><button onclick='apagarJogo(${jogo.id})'>Cancel buy</button>`
+                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}R$</p><button onclick='apagarJogo(${jogo.id})' class ='btn-shop'>Cancel buy</button>`
                 divHTML.appendChild(div)
             }
         }
