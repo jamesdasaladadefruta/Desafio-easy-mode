@@ -7,41 +7,46 @@
     <title>Carrinho</title>
 </head>
 <style>
-    body{
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        font-family: "Roboto", sans-serif;
+    }
+
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: stretch;
         min-height: 100vh;
     }
-    .container{
+
+    .container {
         padding: 10px;
         border: 2px solid black;
         border-radius: 10px;
+        width: auto;
     }
 
-    img{
+    img {
         width: 300px;
         border-radius: 10px;
     }
 
-    .carrinho{
+    .carrinho {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         padding: 10px;
+        gap: 10px;
     }
 
-    .divCarrinho{
+    .divCarrinho {
         display: flex;
         flex-direction: column;
         align-items: center;
+        border: 2px solid black;
+        padding: 20px;
     }
-
-        
-
-
-
-
 </style>
 
 
@@ -86,7 +91,7 @@
                 div.className = "divCarrinho"
 
 
-                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}R$</p><button onclick='apagarJogo(${jogo.id})'>Delete</button>`
+                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'><p>${jogo.valor}R$</p><button onclick='apagarJogo(${jogo.id})'>Cancel buy</button>`
                 divHTML.appendChild(div)
             }
         }
