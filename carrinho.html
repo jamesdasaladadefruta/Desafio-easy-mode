@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="carrinho" id="carrinho">
+            
+        </div>
+
+    </div>
+
+
+    <script>
+
+        async function montarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho' || '[]'))
+            let divHTML = document.getElementById('carrinho')
+
+            let jogosContados = {}
+            let quantidade
+
+            carrinho.forEach(jogo => {
+                if (jogosContados[jogo.nome]) {
+                    jogosContados[jogo.nome].quantidade++
+                } else {
+                    jogosContados[jogo.nome] = { ...jogo, quantidade: 1 }
+                }
+            })
+            for (let nome in jogosContados) {
+                let jogo = jogosContados[nome]
+
+                let div = document.createElement('div')
+                div.innerHTML = `<h2>${jogo.nome} - Quantity to buy: ${jogo.quantidade}</h2><img src='${jogo.img}'<p>${jogo.valor}</p><button onclick='apagarJogo(${jogo.id})'>Apagar</button>`
+                divHTML.appendChild(div)
+            }
+        }
+
+        function apagarJogo(id) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho' || '[]'))
+            carrinho = carrinho.filter(jogo => jogo.id !== id)
+            localStorage.setItem('carrinho', JSON.stringify(carrinho))
+            document.getElementById('carrinho').innerHTML = ''
+            montarCarrinho()
+
+        }
+
+
+
+
+
+
+
+
+        montarCarrinho()
+
+    </script>
+
+</body>
+
+</html>
